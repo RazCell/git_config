@@ -1,0 +1,2 @@
+[alias]
+	cleanup = "!f() { git fetch -p origin && git checkout origin/dev && local_branches=$(git branch | sed 's/*//'); for branch in ${local_branches[@]::${#local_branches[@]}-1}; do if ! git branch -r | grep -q \"origin/$branch\"; then git branch -d $branch; fi; done; }; f"
