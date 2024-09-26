@@ -1,3 +1,12 @@
 [alias]
     # Iterating over local branches which their remote branch was deleted.
     branch-delete-local = "!f() { git branch -vv | findstr '[origin/.*: gone]' | awk '{print $1}' | xargs -r git branch -D; }; f"
+
+	graph = log --oneline --all --graph
+
+    # Lists all the branches which had an upstream branch that is now gone
+    branch-gone = "! git branch -vv | grep '\\[origin.* gone' | awk '{print $1}'"
+    # Deletes all the branches which had an upstream branch that is now gone
+    branch-gone-delete = "! git branch-gone | xargs git branch -d"
+[core]
+	editor = nvim
