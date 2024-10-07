@@ -8,5 +8,8 @@
     branch-gone = "! git branch -vv | grep '\\[origin.* gone' | awk '{print $1}'"
     # Deletes all the branches which had an upstream branch that is now gone
     branch-gone-delete = "! git branch-gone | xargs git branch -d"
+
+    # Todays work (commits log, since midnight) in a pretty format
+    todays = "!git log --since=midnight --pretty=format:'%C(yellow)%H %C(cyan)%an: %C(reset)%B'"
 [core]
 	editor = nvim
